@@ -26,7 +26,7 @@ CMD <<END
 copy .\Release\Synthesia.exe .\Synthesia.For.Black.MIDI.exe /v /y
 "$MSBUILD_PATH" .\Synthesia.sln -t:Clean
 END
-sleep 1
+sleep 8
 unset GIT_DIR
 unset GIT_WORK_TREE
 exit 0
