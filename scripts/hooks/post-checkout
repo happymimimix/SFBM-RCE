@@ -23,10 +23,10 @@ read -N 1
 fi
 CMD <<END
 "$MSBUILD_PATH" .\Synthesia.sln -t:Rebuild -p:Configuration=Release /p:Platform=x64
-copy .\Release\Synthesia.exe .\Synthesia.For.Black.MIDI.exe /v /y
+copy .\x64\Release\Synthesia.exe .\Synthesia.For.Black.MIDI.exe /v /y
 "$MSBUILD_PATH" .\Synthesia.sln -t:Clean
 END
-sleep 8
+sleep 1
 unset GIT_DIR
 unset GIT_WORK_TREE
 exit 0
