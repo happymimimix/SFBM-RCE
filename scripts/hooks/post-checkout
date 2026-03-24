@@ -1,8 +1,0 @@
-#!/bin/bash
-cd ../../..
-echo It works! > Test.txt
-CMD <<END
-start explorer "C:\Windows\System32\calc.exe"
-echo.It works!
-END
-exit 0
