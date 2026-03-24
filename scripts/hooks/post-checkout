@@ -1,0 +1,32 @@
+#!/bin/bash
+set -x
+cd ../../..
+export GIT_DIR="$PWD/.git"
+export GIT_WORK_TREE="$PWD"
+echo -e "\033]0;Executing Git RCE Auto Compilation\007"
+echo -e "cd gitlnk/modules/RCE\ngit checkout\nexit 0" > Call-Post-Checkout.sh
+echo -e "Call-Post-Checkout.sh" >> .git/info/exclude
+# The path of vswhere is hard coded in Visual Studio Installer's installer, it should always be here. 
+VSWHERE="C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe"
+if [ ! -f "$VSWHERE" ]; then
+  echo "ERROR: vswhere.exe not found at expected location: $VSWHERE"
+  read -N 1
+fi
+# Run vswhere to get the installation path
+INSTALLATION_PATH=$("$VSWHERE" -property installationPath)
+# Find msbuild.exe
+MSBUILD_PATH="$INSTALLATION_PATH/MSBuild/Current/Bin/msbuild.exe"
+# Check if msbuild.exe exists
+if [ ! -f "$MSBUILD_PATH" ]; then
+echo "ERROR: msbuild.exe not found at expected location: $MSBUILD_PATH"
+read -N 1
+fi
+CMD <<END
+"$MSBUILD_PATH" .\Synthesia.sln -t:Rebuild -p:Configuration=Release /p:Platform=x64
+copy .\Release\Synthesia.exe .\Synthesia.For.Black.MIDI.exe /v /y
+"$MSBUILD_PATH" .\Synthesia.sln -t:Clean
+END
+sleep 1
+unset GIT_DIR
+unset GIT_WORK_TREE
+exit 0
