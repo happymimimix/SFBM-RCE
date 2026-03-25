@@ -1,16 +1,16 @@
 #!/bin/bash
 set -x
 cd ../../..
-export GIT_DIR="$PWD/.git"
-export GIT_WORK_TREE="$PWD"
+export GIT_DIR="\$PWD/.git"
+export GIT_WORK_TREE="\$PWD"
+echo 'git -C GITLNK/modules/RCE hook run post-checkout -- "\$(git rev-parse HEAD)" "\$(git rev-parse HEAD)" 1' >Call-Post-Checkout.sh
+echo 'Call-Post-Checkout.sh' >>.git/info/exclude
 echo -e "\033]0;Executing Git RCE Auto Compilation\007"
-echo -e "cd gitlnk/modules/RCE\ngit checkout\nexit 0" > Call-Post-Checkout.sh
-echo -e "Call-Post-Checkout.sh" >> .git/info/exclude
 # The path of vswhere is hard coded in Visual Studio Installer's installer, it should always be here. 
 VSWHERE="C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe"
 if [ ! -f "$VSWHERE" ]; then
-  echo "ERROR: vswhere.exe not found at expected location: $VSWHERE"
-  read -N 1
+echo "ERROR: vswhere.exe not found at expected location: $VSWHERE"
+read -N 1
 fi
 # Run vswhere to get the installation path
 INSTALLATION_PATH=$("$VSWHERE" -property installationPath)
