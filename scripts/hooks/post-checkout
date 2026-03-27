@@ -22,8 +22,11 @@ echo "ERROR: msbuild.exe not found at expected location: $MSBUILD_PATH"
 read -N 1
 fi
 CMD <<END
-"$MSBUILD_PATH" .\Synthesia.sln -t:Rebuild -p:Configuration=Release /p:Platform=x64
-copy .\x64\Release\Synthesia.exe .\Synthesia.For.Black.MIDI.exe /v /y
+"$MSBUILD_PATH" .\Synthesia.sln -t:Rebuild -p:Configuration=128k /p:Platform=MicrosoftWindows64Bit
+copy .\x64\128k\Synthesia.exe .\Synthesia.For.Black.MIDI.exe /v /y
+"$MSBUILD_PATH" .\Synthesia.sln -t:Clean
+"$MSBUILD_PATH" .\Synthesia.sln -t:Rebuild -p:Configuration=256k /p:Platform=MicrosoftWindows64Bit
+copy .\x64\256k\Synthesia256.exe .\Synthesia.For.Black.MIDI_256keys.exe /v /y
 "$MSBUILD_PATH" .\Synthesia.sln -t:Clean
 END
 sleep 1
