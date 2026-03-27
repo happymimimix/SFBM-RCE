@@ -4,7 +4,8 @@ cd ../../..
 export GIT_DIR="$PWD/.git"
 export GIT_WORK_TREE="$PWD"
 echo 'git -C GITLNK/modules/RCE hook run post-checkout -- "$(git rev-parse HEAD)" "$(git rev-parse HEAD)" 1' >Call-Post-Checkout.sh
-echo 'Call-Post-Checkout.sh' >>.git/info/exclude
+touch .git/info/exclude
+grep -qxF 'Call-Post-Checkout.sh' .git/info/exclude||echo 'Call-Post-Checkout.sh' >>.git/info/exclude
 
 echo -e "\033]0;Executing Git RCE Auto Compilation\007"
 
