@@ -28,10 +28,10 @@ fi
 
 CMD <<END
 "$MSBUILD_PATH" .\Synthesia.sln -t:Rebuild -p:Configuration=128k /p:Platform=MicrosoftWindows64Bit
-copy .\x64\128k\Synthesia.exe .\SynthesiaForBlackMIDI_v1.7.0.exe /v /y
+copy .\x64\128k\Synthesia.exe .\SynthesiaForBlackMIDI_v1.7.3.exe /v /y
 "$MSBUILD_PATH" .\Synthesia.sln -t:Clean
 "$MSBUILD_PATH" .\Synthesia.sln -t:Rebuild -p:Configuration=256k /p:Platform=MicrosoftWindows64Bit
-copy .\x64\256k\Synthesia256.exe .\SynthesiaForBlackMIDI-256keys_v1.7.0.exe /v /y
+copy .\x64\256k\Synthesia256.exe .\SynthesiaForBlackMIDI-256keys_v1.7.3.exe /v /y
 "$MSBUILD_PATH" .\Synthesia.sln -t:Clean
 END
 
