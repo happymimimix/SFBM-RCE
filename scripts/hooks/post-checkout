@@ -28,16 +28,16 @@ fi
 
 CMD <<END
 "$MSBUILD_PATH" .\Synthesia.sln -t:Rebuild -p:Configuration=128k /p:Platform=MicrosoftWindows64Bit
-copy .\x64\128k\Synthesia.exe .\SynthesiaForBlackMIDI(WithAutoplayBot)_v1.7.3.exe /v /y
+copy .\x64\128k\Synthesia.exe .\SynthesiaForBlackMIDI(WithAutoplayBot)_v1.7.4.exe /v /y
 "$MSBUILD_PATH" .\Synthesia.sln -t:Clean
 "$MSBUILD_PATH" .\Synthesia.sln -t:Rebuild -p:Configuration=256k /p:Platform=MicrosoftWindows64Bit
-copy .\x64\256k\Synthesia256.exe .\SynthesiaForBlackMIDI(WithAutoplayBot)-256keys_v1.7.3.exe /v /y
+copy .\x64\256k\Synthesia256.exe .\SynthesiaForBlackMIDI(WithAutoplayBot)-256keys_v1.7.4.exe /v /y
 "$MSBUILD_PATH" .\Synthesia.sln -t:Clean
 "$MSBUILD_PATH" .\Synthesia.sln -t:Rebuild -p:Configuration=NoAI /p:Platform=MicrosoftWindows64Bit
-copy .\x64\128k\Synthesia.exe .\SynthesiaForBlackMIDI_v1.7.3.exe /v /y
+copy .\x64\128k\SynthesiaNoAI.exe .\SynthesiaForBlackMIDI_v1.7.4.exe /v /y
 "$MSBUILD_PATH" .\Synthesia.sln -t:Clean
 "$MSBUILD_PATH" .\Synthesia.sln -t:Rebuild -p:Configuration=NoAI256 /p:Platform=MicrosoftWindows64Bit
-copy .\x64\256k\Synthesia256.exe .\SynthesiaForBlackMIDI-256keys_v1.7.3.exe /v /y
+copy .\x64\256k\SynthesiaNoAI256.exe .\SynthesiaForBlackMIDI-256keys_v1.7.4.exe /v /y
 "$MSBUILD_PATH" .\Synthesia.sln -t:Clean
 END
 
